@@ -15,7 +15,7 @@ public class WeatherService : IWeatherService
             })
             .ToArray();
 
-        await Task.Delay(Random.Shared.Next(10, 20));
+        await Task.Delay(Random.Shared.Next(1000, 2000));
         return weather;
     }
 

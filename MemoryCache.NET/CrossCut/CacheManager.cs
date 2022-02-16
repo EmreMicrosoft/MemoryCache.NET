@@ -4,12 +4,12 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace MemoryCache.NET.CrossCut;
 
-public class MemoryCacheManager : ICacheManager
+public class CacheManager : ICacheManager
 {
     private readonly IMemoryCache _memoryCache;
     private static IServiceProvider ServiceProvider { get; set; }
 
-    public MemoryCacheManager()
+    public CacheManager()
     {
         _memoryCache = ServiceProvider.GetService<IMemoryCache>();
     }
