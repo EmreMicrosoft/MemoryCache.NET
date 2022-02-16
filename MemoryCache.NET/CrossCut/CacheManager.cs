@@ -7,17 +7,15 @@ namespace MemoryCache.NET.CrossCut;
 public class CacheManager : ICacheManager
 {
     private readonly IMemoryCache _memoryCache;
-    private static IServiceProvider ServiceProvider { get; set; }
-
-    public CacheManager()
+    public CacheManager(IMemoryCache memoryCache)
     {
-        _memoryCache = ServiceProvider.GetService<IMemoryCache>();
+        _memoryCache = memoryCache;
     }
 
-    public void Add(string key, object value, int duration)
+    public void Add(string key, object value, int durationMinute)
     {
         _memoryCache.Set(key, value,
-            TimeSpan.FromMinutes(duration));
+            TimeSpan.FromMinutes(durationMinute));
     }
 
     public T Get<T>(string key)
