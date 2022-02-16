@@ -12,7 +12,7 @@ public class CacheManager : ICacheManager
         _memoryCache = memoryCache;
     }
 
-    public void Add(string key, object value, int durationMinute)
+    public void Set(string key, object value, int durationMinute)
     {
         _memoryCache.Set(key, value,
             TimeSpan.FromMinutes(durationMinute));
@@ -28,7 +28,7 @@ public class CacheManager : ICacheManager
         return _memoryCache.Get(key);
     }
 
-    public bool IsAdd(string key)
+    public bool IsExist(string key)
     {
         return _memoryCache.TryGetValue(key, out _);
     }

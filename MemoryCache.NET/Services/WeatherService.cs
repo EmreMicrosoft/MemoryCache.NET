@@ -31,7 +31,7 @@ public class WeatherService : IWeatherService
 
         await Task.Delay(Random.Shared.Next(1000, 2000));
 
-        _cacheManager.Add(key: "weather-forecast",
+        _cacheManager.Set(key: "weather-forecast",
                           data: weather, durationMinute: 1);
 
         return weather;
