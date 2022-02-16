@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Caching.Memory;
 
 
-namespace MemoryCache.NET.CrossCut;
+namespace MemoryCache.NET.CrossCutting.CacheManagement;
 
 public class CacheManager : ICacheManager
 {

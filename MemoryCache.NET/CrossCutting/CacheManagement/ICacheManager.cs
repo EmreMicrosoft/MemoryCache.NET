@@ -1,4 +1,4 @@
-﻿namespace MemoryCache.NET.CrossCut;
+﻿namespace MemoryCache.NET.CrossCutting.CacheManagement;
 
 public interface ICacheManager
 {

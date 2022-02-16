@@ -1,4 +1,4 @@
-﻿using MemoryCache.NET.CrossCut;
+﻿using MemoryCache.NET.CrossCutting.CacheManagement;
 using MemoryCache.NET.Models;
 
 
