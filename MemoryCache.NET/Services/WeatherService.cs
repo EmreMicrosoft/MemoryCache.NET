@@ -1,25 +1,31 @@
-﻿using MemoryCache.NET.Aspects;
-using MemoryCache.NET.Data;
+﻿using MemoryCache.NET.Data;
+using Microsoft.Extensions.Caching.Memory;
 
 
 namespace MemoryCache.NET.Services;
 
 public class WeatherService : IWeatherService
 {
-    [CacheAspect("WeatherForecast")]
+    private readonly IMemoryCache _memoryCache;
+
+    public WeatherService(IMemoryCache memoryCache)
+    {
+        _memoryCache = memoryCache;
+    }
+
     public async Task<IEnumerable<WeatherModel>> GetWeatherAsync()
     {
-        //var weather = _cacheManager
-        //    .Get<IEnumerable<WeatherModel>>("weather-forecast");
+        var weather = _memoryCache
+            .Get<IEnumerable<WeatherModel>>("weather-forecast");
 
-        //if (weather != null)
-        //    return weather;
+        if (weather != null)
+            return weather;
 
-        var weather = await WeatherData.Get();
+        weather = await WeatherData.Get();
 
-        //_cacheManager.Set(key: "WeatherForecast",
-        //                  data: weather, durationMinute: 1);
+        var weatherForecast = weather.ToList();
+        _memoryCache.Set(key: "weather-forecast", weatherForecast);
 
-        return weather;
+        return weatherForecast;
     }
 }

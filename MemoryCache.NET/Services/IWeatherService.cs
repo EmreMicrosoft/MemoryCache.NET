@@ -1,5 +1,4 @@
-﻿using MemoryCache.NET.Aspects;
-using MemoryCache.NET.Data;
+﻿using MemoryCache.NET.Data;
 
 
 namespace MemoryCache.NET.Services;

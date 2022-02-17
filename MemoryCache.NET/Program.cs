@@ -1,4 +1,3 @@
-using MemoryCache.NET.CrossCutting.CacheManagement;
 using MemoryCache.NET.Services;
 
 
@@ -10,10 +9,7 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddMemoryCache();
-builder.Services.AddSingleton<ICacheManager, CacheManager>();
-
 builder.Services.AddSingleton<IWeatherService, WeatherService>();
-
 
 
 var app = builder.Build();
