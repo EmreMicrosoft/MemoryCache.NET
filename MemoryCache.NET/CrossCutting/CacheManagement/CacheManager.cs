@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using MemoryCache.NET.CrossCutting.Tools;
 using Microsoft.Extensions.Caching.Memory;
 
 
@@ -7,15 +8,16 @@ namespace MemoryCache.NET.CrossCutting.CacheManagement;
 public class CacheManager : ICacheManager
 {
     private readonly IMemoryCache _memoryCache;
-    public CacheManager(IMemoryCache memoryCache)
+
+    public CacheManager()
     {
-        _memoryCache = memoryCache;
+        _memoryCache = ServiceTool.ServiceProvider.GetService<IMemoryCache>();
     }
 
-    public void Set(string key, object value, int durationMinute)
+    public void Set(string key, object value, int durationInMinute)
     {
         _memoryCache.Set(key, value,
-            TimeSpan.FromMinutes(durationMinute));
+            TimeSpan.FromMinutes(durationInMinute));
     }
 
     public T Get<T>(string key)

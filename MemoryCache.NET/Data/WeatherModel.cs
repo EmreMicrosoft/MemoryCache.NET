@@ -1,4 +1,4 @@
-namespace MemoryCache.NET.Models;
+namespace MemoryCache.NET.Data;
 
 public class WeatherModel
 {

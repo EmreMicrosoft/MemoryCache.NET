@@ -1,4 +1,4 @@
-using MemoryCache.NET.Models;
+using MemoryCache.NET.Data;
 using MemoryCache.NET.Services;
 using Microsoft.AspNetCore.Mvc;
 
